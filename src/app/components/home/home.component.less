@@ -2,39 +2,25 @@
 // @randomColor: ~` "#" + Math.floor(Math.random() * 0xffffff) .toString(16)
 //   .padEnd(6, "0") `;
 
-@randomColor: ~` "#" + Math.floor(Math.random() * (2<<23)) .toString(16) `;
+@import "/src/assets/less/color.less";
 
-@color-turquoise: #1abc9c;
-@color-emerald: #2ecc71;
-@color-peter-river: #3498db;
-@color-amethyst: #9b59b6;
-@color-wet-asphalt: #34495e;
-@color-green-sea: #16a085;
-@color-nephritis: #27ae60;
-@color-belize-hole: #2980b9;
-@color-wisteria: #8e44ad;
-@color-midnight-blue: #2c3e50;
-@color-sun-flower: #f1c40f;
-@color-carrot: #e67e22;
-@color-alizarin: #e74c3c;
-@color-clouds: #ecf0f1;
-@color-concrete: #95a5a6;
-@color-orange: #f39c12;
-@color-pumpkin: #d35400;
-@color-pomeganate: #c0392b;
-@color-silver: #bdc3c7;
-@color-asberstos: #7f8c8d;
-
-@colors: @color-turquoise, @color-emerald, @color-peter-river, @color-amethyst,
-  @color-wet-asphalt, @color-green-sea, @color-nephritis, @color-belize-hole,
-  @color-wisteria, @color-midnight-blue, @color-sun-flower, @color-carrot,
-  @color-alizarin, @color-clouds, @color-concrete, @color-orange, @color-pumpkin,
-  @color-pomeganate, @color-silver, @color-asberstos;
-
-@length: length(@colors);
+#generate-color(@n, @i: 1) when (@i =< @n) {
+  li:nth-child(@{i}) {
+    mat-card {
+      --color: extract(@colors, ~`Math.floor(Math.random() * 20) `);
+      color: var(--color);
+      &:hover {
+        background-color: var(--color);
+        box-shadow: 10px 10px 99px 6px var(--color);
+      }
+    }
+  }
+  #generate-color(@n, (@i + 1));
+}
+#generate-color(@length);
 
 ul {
-  --color: extract(@colors, ~`Math.floor(Math.random()*20)`);
+  // --color: extract(@colors, ~`Math.floor(Math.random()*20)`);
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -42,7 +28,7 @@ ul {
   width: 90%;
   margin: auto;
   padding: 0;
-  
+
   li {
     width: 50%;
     flex: 0 0 50%;
@@ -61,8 +47,9 @@ ul {
       border: 1px solid;
       background-color: transparent;
 
+      // color: var(--color);
+
       // color: #4cc9f0;
-      color: var(--color);
       // text-transform: uppercase;
       // font-size: 14px;
       // padding: 10px 20px;
@@ -71,9 +58,10 @@ ul {
       &:hover {
         color: white;
         border: 0;
+        cursor: pointer;
 
-        background-color: var(--color);
-        box-shadow: 10px 10px 99px 6px var(--color);
+        // background-color: var(--color);
+        // box-shadow: 10px 10px 99px 6px var(--color);
 
         font-size: 2rem;
         font-weight: bolder;
