@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.less'],
 })
 export class HomeComponent implements OnInit {
-  zodiac = [
+  public zodiac = [
     'Aries',
     'Taurus',
     'Gemini',
@@ -23,5 +23,11 @@ export class HomeComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  public cardClick(item: string): void {
+    location.hash = item;
+    console.log(item);
+  }
 }

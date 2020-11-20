@@ -1,7 +1,8 @@
 <div class="zodiac-container">
   <ul>
     <li *ngFor="let item of zodiac">
-      <mat-card>
+      <!-- <a [routerLink]="[ '/path' ]"></a> -->
+      <mat-card (click)="cardClick(item)">
         {{ item }}
       </mat-card>
     </li>
