@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "constellation"
+  "defaultProject": "constellation",
+  "cli": {
+    "analytics": false
+  }
 }
